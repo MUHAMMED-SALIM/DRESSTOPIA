@@ -1,0 +1,187 @@
+   
+   <%- include("../layouts/admin/header.ejs") %>
+ 
+
+    <body>
+        <div class="screen-overlay"></div>
+        <aside class="navbar-aside" id="offcanvas_aside">
+            <div class="aside-top">
+                <a href="" class="brand-wrap">
+                    <img src="imgs/theme/logo.svg" class="logo" alt="RAZO.store" />
+                </a>
+                <div>
+                    <button class="btn btn-icon btn-aside-minimize"><i class="text-muted material-icons md-menu_open"></i></button>
+                </div>
+            </div>
+            <nav>
+                <ul class="menu-aside">
+                    <li class="menu-item">
+                        <a class="menu-link" href="/admin/dash">
+                            <i class="icon material-icons md-home"></i>
+                            <span class="text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="menu-item ">
+                        <a class="menu-link" href="/admin/users">
+                          <i class="icon material-icons md-shopping_bag"></i>
+                          <span class="text">Users</span>
+                        </a>
+                      </li>
+            
+                      <li class="menu-item active">
+                        <a class="menu-link" href="/admin/category">
+                          <i class="icon material-icons md-shopping_cart"></i>
+                          <span class="text">Catgeory</span>
+                        </a>
+                      </li>
+                      <li class="menu-item">
+                        <a class="menu-link" href="/admin/products">
+                          <i class="icon material-icons md-shopping_cart"></i>
+                          <span class="text">Products</span>
+                        </a>
+                      </li>
+                      <li class="menu-item">
+                        <a class="menu-link" href="/admin/order">
+                          <i class="icon material-icons md-shopping_cart"></i>
+                          <span class="text">Orders</span>
+                        </a>
+                      </li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-wrap">
+            <header class="main-header navbar">
+                <div class="col-search">
+                    <form class="searchform">
+                        <div class="input-group">
+                            <input list="search_terms" type="text" class="form-control" placeholder="Search term" />
+                            <button class="btn btn-light bg" type="button"><i class="material-icons md-search"></i></button>
+                        </div>
+                        <datalist id="search_terms">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </datalist>
+                    </form>
+                </div>
+                <div class="col-nav">
+                    <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"><i class="material-icons md-apps"></i></button>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link btn-icon" href="#">
+                                <i class="material-icons md-notifications animation-shake"></i>
+                                <span class="badge rounded-pill">3</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage" aria-expanded="false"><i class="material-icons md-public"></i></a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                                <a class="dropdown-item text-brand" href="#"><img src="imgs/theme/flag-us.png" alt="English" />English</a>
+                                <a class="dropdown-item" href="#"><img src="imgs/theme/flag-fr.png" alt="Français" />Français</a>
+                              
+                            </div>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="imgs/people/avatar-2.png" alt="User" /></a>
+                           
+                               
+                      <div class="dropdown-divider"></div>
+                  <a class="dropdown-item text-danger" href="/admin/logout">
+                   <i class="material-icons md-exit_to_app"></i>Logout
+                  </a>
+                  </div>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <section class="content-main">
+                <div class="content-header">
+                    <div>
+                        <h2 class="content-title card-title">Categories</h2>
+                        <p>Add, edit or delete a category</p>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Search Categories" class="form-control bg-white" />
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <div class="row"> -->
+                            <div class="col-md">
+                                <form action="/admin/edit" method="post" id="editCategoryForm">
+                                    <div class="mb-4">
+                                        <label for="product_name" class="form-label">Name</label>
+                                        <input type="text" placeholder="Type here" class="form-control" id="product_name" name="name" value="<%= Data.name %>" />
+                                        <input type="hidden" name="categoryId" value="<%= Data._id %>" >
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Description</label>
+                                        <input type="text" placeholder="Type here" class="form-control" id="product_description" name="description" value="<%= Data.description %>" />
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary" id="submitBtn">Update category</button>
+                                    </div>
+                                    <% if(typeof message != 'undefined'){ %>
+                                        <span style="color: red; font-size: small;"><%= locals.message %></span>
+                                    <% } %>
+                                </form>
+                            </div>
+                          
+                            <!-- .col// -->
+                    
+                        <!-- .row // -->
+                    </div>
+                    <!-- card body .// -->
+                </div>
+                <!-- card .// -->
+            </section>
+            <!-- content-main end// -->
+            <footer class="main-footer font-xs">
+                <div class="row pb-30 pt-15">
+                    <div class="col-sm-6">
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const form = document.getElementById('editCategoryForm');
+                                const submitBtn = document.getElementById('submitBtn');
+                        
+                                form.addEventListener('submit', function(event) {
+                                    const nameValue = form.name.value.trim(); // Remove leading and trailing whitespace from the name value
+                                    const descriptionValue = form.description.value.trim(); // Remove leading and trailing whitespace from the description value
+                        
+                                    // Prevent form submission if either name or description is empty after trimming
+                                    if (nameValue === '' || descriptionValue === '') {
+                                        event.preventDefault(); // Prevent form submission
+                                        alert('Please fill in all fields.'); // Display an alert message to the user
+                                    }
+                                });
+                            });
+                        </script>
+                       
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end">All rights reserved</div>
+                    </div>
+                </div>
+            </footer>
+        
+        <script src="ors/jquery-3.6.0.min.js"></script>
+        <script src="js/vendors/bootstrap.bundle.min.js"></script>
+        <script src="js/vendors/select2.min.js"></script>
+        <script src="js/vendors/perfect-scrollbar.js"></script>
+        <script src="js/vendors/jquery.fullscreen.min.js"></script>
+        <!-- Main Script -->
+        <script src="js/main.js?v=1.1" type="text/javascript"></script>
+    </body>
+</html>
+
+<%- include("../layouts/admin/footer.ejs") %>

@@ -1,0 +1,126 @@
+ <%- include("../layouts/header.ejs") %>
+  
+      
+  
+  <main>
+    <div class="mb-4 pb-4"></div>
+    <section class="login-register container">
+        <h2 class="d-none">Register</h2>
+        <ul class="nav nav-tabs mb-5" id="login_register" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="register-tab" data-bs-toggle="tab" href="#tab-item-register" role="tab" aria-controls="tab-item-register">Register</a>
+            </li>
+        </ul>
+        <div id="tab-item-register" role="tabpanel" aria-labelledby="register-tab">
+            <div class="register-form">
+                <form method="post"  onsubmit="return validateform()">
+                    <div class="form-floating mb-3">
+                        <input name="name" type="text" class="form-control form-control_gray" id="name" placeholder="Username" >
+                        <label for="customerNameRegisterInput">Username</label>
+                        <span id="nameError" style="color: red;" class="error" hidden>Enter the valid username</span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="mobile" type="number" class="form-control form-control_gray" id="mobile" placeholder="Phone" >
+                        <label for="customerphoneinput">Phone</label>
+                        <span id="mobileError" style="color: red;" class="error" hidden>Mobile Number is required</span>
+                    </div>
+  
+                    <div class="pb-3"></div>
+  
+                    <div class="form-floating mb-3">
+                        <input name="email" type="email" class="form-control form-control_gray" id="email" placeholder="Email address *">
+                        <label for="customerEmailRegisterInput">Email address *</label>
+                        <span id="emailError"  style="color: red;" class="error" hidden>Invalid email address</span>
+                    </div>
+  
+                    <div class="pb-3"></div>
+  
+                    <div class="form-floating mb-3">
+                        <input name="password" type="password" class="form-control form-control_gray" id="password" placeholder="Password *" >
+                        <label for="customerPasswodRegisterInput">Password *</label>
+                        <span id="passwordError"  style="color: red;" class="error" hidden>Password must be 8 characters long and include at least one uppercase letter and one special character</span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="confirmPassword" type="password" class="form-control form-control_gray" id="ConfirmPassword" placeholder="Confirm Password *" >
+                        <label for="customerConfirmPasswodRegisterInput">Confirm Password *</label>
+                        <span id="confirmPasswordError" style="color: red;" class="error" hidden>Passwords do not match</span>
+                    </div>
+
+  
+                    <button  class="btn btn-primary w-100 text-uppercase" type="submit">Register</button>
+  
+                    <span class="text-secondary">Already have account </span>    
+
+                    <a href="/login" class="btn-text js-show-register  w-100 text-uppercase" >login</a>
+                </form>
+            </div>
+        </div>
+    </section>
+  </main>
+  
+  
+    form validation
+  
+    <script>
+        function validateform() {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var mobileNumber = document.getElementById('mobile').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('ConfirmPassword').value;
+
+    document.getElementById('nameError').hidden = true;
+    document.getElementById('mobileError').hidden = true;
+    document.getElementById('emailError').hidden = true;
+    document.getElementById('passwordError').hidden = true;
+    document.getElementById('confirmPasswordError').hidden = true;
+
+    if (name.trim() === '' || email.trim() === '' || mobileNumber.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+       
+        if (name.trim() === '') {
+            document.getElementById('nameError').hidden = false;
+        }
+        if (email.trim() === '') {
+            document.getElementById('emailError').hidden = false;
+        }
+        if (mobileNumber.trim() === '') {
+            document.getElementById('mobileError').hidden = false;
+        }
+        if (password.trim() === '') {
+            document.getElementById('passwordError').hidden = false;
+        }
+        if (confirmPassword.trim() === '') {
+            document.getElementById('confirmPasswordError').hidden = false;
+        }
+        return false;
+    }
+
+   
+
+    return true; 
+}
+
+    </script>
+    
+  
+   
+  
+  
+      
+  
+ 
+  
+  
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-slider.min.js"></script>
+    
+    <script src="js/swiper.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+  
+   
+  
+  
+  
+      <%- include("../layouts/footer.ejs") %>
